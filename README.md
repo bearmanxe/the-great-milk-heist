@@ -1,108 +1,58 @@
-# The Great Milk Heist 🥛
+# 🎵 Audio Assets Folder
 
-A bright, colorful roguelike game where your milk gets stolen and you must fight through 15 procedurally generated rooms to get it back!
+## Place Your Background Music Here!
 
-## ⚠️ Getting "Error fetching user data"?
+### Quick Instructions:
 
-**👉 Quick fix: `START_HERE.md` (5 minutes)**  
-**📋 Super quick: `QUICK_REFERENCE.md` (2 minutes)**
+1. **Copy** your `Milk Mayhem.mp4` file to this folder
+2. **Rename** it to `background-music.mp4` (or keep the original name)
+3. **Refresh** your browser
 
-## Quick Start
+That's it! The music will automatically start playing.
 
-1. **Database Setup** (Required - 5 minutes)
-   - **New users:** Follow `START_HERE.md` (easiest)
-   - **Detailed guide:** See `SETUP_CHECKLIST.md`
-   - **Technical details:** See `SUPABASE_SETUP.md`
+https://www.dropbox.com/home?preview=background+music.mp4
 
-2. **Play the Game**
-   - Create an account or sign in
-   - Choose your difficulty
-   - Fight through rooms to get your milk back!
+## Current Configuration
 
-## Features
+The app is looking for: `/assets/background-music.mp4`
 
-### Core Gameplay
-- 🎮 **15 procedurally generated rooms** with boss fights every 5 rooms
-- 👾 **8 different enemy types** with unique abilities
-- 🔫 **25 weapons** with unlocking system
-- 💪 **Power-ups** and weapon selection after each room
-- 🏆 **4 difficulty levels** including "MILK" mode at 250% difficulty
-- 💰 **Coin/currency system** for upgrades
-- 🎨 **30 cosmetics** all with gameplay abilities
-
-### Multiplayer & Social
-- 👥 **Friends list system** for multiplayer invites
-- 🎯 **35 custom achievements**
-- 📊 **Stats tracking** (rooms cleared, enemies killed, etc.)
-- 🔐 **User authentication** with Supabase (saves progress)
-
-### Technical Features
-- 🎮 **Full controller support** (PS3/PS4/PS5/Xbox)
-- 🔒 **AI-powered username filtering**
-- 💾 **Cloud save** via Supabase
-- 🎵 **Sound effects** and music
-
-## Troubleshooting
-
-### Common Issues
-
-**"Error fetching user data: The result contains 0 rows"**
-- This is a timing issue with the database trigger
-- The app automatically retries for up to 7.5 seconds
-- If it persists, see `TROUBLESHOOTING.md` issue #1B
-
-**"Database not set up"**
-- Run the migration in Supabase (see `SUPABASE_SETUP.md`)
-- Make sure tables are created
-
-**"Please confirm your email before signing in"**
-- Disable email confirmation in Supabase settings
-- See `SUPABASE_SETUP.md` for instructions
-
-**More Issues?**
-- Check `TROUBLESHOOTING.md` for detailed solutions
-- Run the diagnostic script: `/supabase/migrations/diagnostic_check.sql`
-
-## Documentation
-
-- 📚 `SUPABASE_SETUP.md` - Complete database setup guide
-- 🔧 `TROUBLESHOOTING.md` - Common issues and solutions
-- 📖 `AUTH_REFERENCE.md` - Technical authentication details
-- 📝 `CHANGELOG.md` - Recent updates and changes
-- 🎯 `Attributions.md` - Credits and attributions
-
-## Game Controls
-
-### Keyboard
-- **WASD** - Move
-- **Mouse** - Aim and shoot
-- **Space** - Dodge/dash
-- **ESC** - Pause menu
-
-### Controller
-- **Left Stick** - Move
-- **Right Stick** - Aim
-- **Right Trigger** - Shoot
-- **A/X Button** - Dodge/dash
-- **Start** - Pause menu
-
-## Development
-
-Built with:
-- React + TypeScript
-- Tailwind CSS
-- Supabase (authentication & database)
-- Canvas API (game rendering)
-
-## Deployment
-
-- 🌐 **Browser**: See `BROWSER_DEPLOYMENT.md`
-- 🎮 **Itch.io**: See `ITCH_IO_DEPLOYMENT.md`
-
-## Credits
-
-See `Attributions.md` for full credits and licensing information.
+If you keep the original filename "Milk Mayhem.mp4", update `/config/audio.ts`:
+```typescript
+export const BACKGROUND_MUSIC_URL = '/assets/Milk%20Mayhem.mp4';
+```
 
 ---
 
-**Have fun getting your milk back!** 🥛✨
+## Expected File
+
+**Name:** `Milk Mayhem.mp4` or `background-music.mp4`  
+**Type:** MP4 video file (with audio track) or MP3 audio file  
+**Location:** This folder (`/public/assets/`)
+
+---
+
+## How It Works
+
+Files in the `/public/` folder are served directly by your web server:
+- `/public/assets/background-music.mp4` → Available at `/assets/background-music.mp4`
+- The browser can load it without any CORS or security issues
+- Works offline and in production builds
+
+---
+
+## Troubleshooting
+
+**Not working?**
+1. Check the filename matches exactly (case-sensitive!)
+2. Make sure the file is IN this folder (not in a subfolder)
+3. Refresh your browser (Ctrl+Shift+R for hard refresh)
+4. Check browser console (F12) for errors
+
+**File is here but still hearing chiptune music?**
+- The file path in `/config/audio.ts` might not match the actual filename
+- Check for spaces in the filename (use `%20` in the URL for spaces)
+- Try renaming to a simple name: `background-music.mp4`
+
+---
+
+For detailed setup instructions, see: `/SETUP_YOUR_MUSIC.md`
